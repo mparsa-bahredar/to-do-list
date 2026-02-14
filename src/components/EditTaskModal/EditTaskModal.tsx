@@ -54,7 +54,7 @@ const EditTaskModal = ({ item, setTasks, setIsOpenEditModal }: { item:Task, setT
             <div className='flex flex-col gap-2'>
               <h4 className='w-full font-medium text-base text-left text-[#404040]   dark:text-[#F5F5F5]'>Priority :</h4>
               <select value={priority} onChange={(e) => setPriority(e.target.value as 'High' | 'Medium' | 'Low')}
-              className='py-2 px-2 w-[400px] font-medium text-sm text-[#404040] border border-[#E4E4E4] rounded-xl
+              className='py-2 px-2 w-[400px] font-regular text-sm text-[#404040] border border-[#E4E4E4] rounded-xl
               dark:bg-gray-500 dark:text-[#F5F5F5]'>
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>

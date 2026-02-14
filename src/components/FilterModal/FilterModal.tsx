@@ -30,9 +30,8 @@ const FilterModal = ({ filters, setFilters, setIsOpenFilterModal }: {
       </div>
       <div className='flex flex-col gap-2'>
         <h4 className='w-full font-medium text-base text-left text-[#404040]   dark:text-[#F5F5F5]'>Priority :</h4>
-        <select value={tempFilters.priority} onChange={handlePriorityChange} className='py-2 px-2 w-[400px] text-[#404040] border 
-        border-[#E4E4E4] rounded-xl
-        dark:text-[#F5F5F5] dark:bg-gray-500'>
+        <select value={tempFilters.priority} onChange={handlePriorityChange} className='py-2 px-2 w-[400px] font-regular text-sm 
+        text-[#404040] border border-[#E4E4E4] rounded-xl   dark:text-[#F5F5F5] dark:bg-gray-500'>
           <option value=''>All</option>
           <option value="High">High</option>
           <option value="Medium">Medium</option>
