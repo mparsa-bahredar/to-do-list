@@ -8,14 +8,15 @@ const EditTaskModal = ({ item, setTasks, setIsOpenEditModal }: { item:Task, setT
 
   const [title, setTitle] = useState<string>(item.title)
   const [description, setDescription] = useState<string>(item.description)
+  const [priority, setPriority] = useState<Task['priority']>(item.priority)
 
   const editTask = () => {
     if (!title.trim()) return
 
-    setTasks(prev => {
+    setTasks((prev) => {
       const updated = prev.map(t =>
         t.id === item.id
-          ? { ...t, title, description }
+          ? { ...t, title, description, priority }
           : t
       )
       saveTasks(updated)
@@ -35,21 +36,31 @@ const EditTaskModal = ({ item, setTasks, setIsOpenEditModal }: { item:Task, setT
         </div>
         <div className='flex flex-col gap-10'>
           <div className='flex flex-col gap-4'>
-              <div className='flex flex-col items-start gap-2'>
-                <h4 className='w-full font-medium text-base text-left text-[#404040]   dark:text-[#F5F5F5]'>Title :</h4>
-                <input onChange={(e) => setTitle(e.target.value)} type="text" value={title} placeholder='Enter the task name'
-                className='w-[400px] py-2 pl-2 font-regular text-sm text-left text-[#525252] bg-[#F5F5F5] outline-none focus:ring-2 
-                focus:ring-[#E4E4E4] rounded-lg
-                dark:text-[#F5F5F5] dark:bg-gray-500'/>
-              </div>
-              <div className='flex flex-col items-start gap-2'>
-                <h4 className='w-full font-medium text-base text-left text-[#404040]   dark:text-[#F5F5F5]'>Description :</h4>
-                <input onChange={(e) => setDescription(e.target.value)} type="text" value={description} 
-                placeholder='Enter the task description'
-                className='w-[400px] py-2 pl-2 font-regular text-sm text-left text-[#525252] bg-[#F5F5F5] outline-none focus:ring-2 
-                focus:ring-[#E4E4E4] rounded-lg
-                dark:text-[#F5F5F5] dark:bg-gray-500'/>
-              </div>
+            <div className='flex flex-col items-start gap-2'>
+              <h4 className='w-full font-medium text-base text-left text-[#404040]   dark:text-[#F5F5F5]'>Title :</h4>
+              <input onChange={(e) => setTitle(e.target.value)} type="text" value={title} placeholder='Enter the task name'
+              className='w-[400px] py-2 pl-2 font-regular text-sm text-left text-[#525252] bg-[#F5F5F5] outline-none focus:ring-2 
+              focus:ring-[#E4E4E4] rounded-lg
+              dark:text-[#F5F5F5] dark:bg-gray-500'/>
+            </div>
+            <div className='flex flex-col items-start gap-2'>
+              <h4 className='w-full font-medium text-base text-left text-[#404040]   dark:text-[#F5F5F5]'>Description :</h4>
+              <input onChange={(e) => setDescription(e.target.value)} type="text" value={description} 
+              placeholder='Enter the task description'
+              className='w-[400px] py-2 pl-2 font-regular text-sm text-left text-[#525252] bg-[#F5F5F5] outline-none focus:ring-2 
+              focus:ring-[#E4E4E4] rounded-lg
+              dark:text-[#F5F5F5] dark:bg-gray-500'/>
+            </div>
+            <div className='flex flex-col gap-2'>
+              <h4 className='w-full font-medium text-base text-left text-[#404040]   dark:text-[#F5F5F5]'>Priority :</h4>
+              <select value={priority} onChange={(e) => setPriority(e.target.value as 'High' | 'Medium' | 'Low')}
+              className='py-2 px-2 w-[400px] font-medium text-sm text-[#404040] border border-[#E4E4E4] rounded-xl
+              dark:bg-gray-500 dark:text-[#F5F5F5]'>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
           </div>
           <button onClick={editTask} type='button' 
           className='w-full py-2 font-medium text-sm text-[#FFFFFF] bg-[#1E88E5] rounded-lg cursor-pointer'>Save</button>
