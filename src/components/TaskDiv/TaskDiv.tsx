@@ -40,6 +40,7 @@ const TaskDiv = ({ item, setTasks }: { setTasks:React.Dispatch<React.SetStateAct
           <h4 className='text-sm font-medium text-[#404040]   dark:text-[#F5F5F5]'>{item.title}</h4>
           <p className='text-sm font-regular text-[#404040]   dark:text-[#F5F5F5]'>{item.description}</p>
           <span className='text-sm font-regular text-[#404040]   dark:text-[#F5F5F5]'>{item.priority}</span>
+          <span className='text-sm font-regular text-[#404040]   dark:text-[#F5F5F5]'>{item.category}</span>
         </div>
       </div>
       <div className='flex gap-2'>

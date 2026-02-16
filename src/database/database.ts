@@ -4,18 +4,29 @@ export interface Task {
   description: string;
   completed: boolean;
   priority: 'High' | 'Medium' | 'Low';
+  category: string;
 }
 
-const KEY = 'tasks';
+const DEFAULT_CATEGORIES = [
+  'Work',
+  'Personal',
+  'Study',
+  'Health',
+  'Shopping',
+];
 
-export const getTasks = (): Task[] => {
-  if (typeof window === 'undefined') return [];  
-  const data = localStorage.getItem(KEY);
-  return data ? (JSON.parse(data) as Task[]) : [];
+export const getTasks = (): Task[] =>
+  JSON.parse(localStorage.getItem('tasks') || '[]');
+
+export const saveTasks = (tasks: Task[]) =>
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+
+export const getCategories = (): string[] => {
+  const data = localStorage.getItem('categories');
+  if (!data) localStorage.setItem('categories', JSON.stringify(DEFAULT_CATEGORIES));
+  return JSON.parse(localStorage.getItem('categories')!);
 };
 
-export const saveTasks = (tasks: Task[]): void => {
-  if (typeof window !== 'undefined') {
-    localStorage.setItem(KEY, JSON.stringify(tasks));
-  }
+export const saveCategories = (categories: string[]): void => {
+  localStorage.setItem('categories', JSON.stringify(categories));
 };

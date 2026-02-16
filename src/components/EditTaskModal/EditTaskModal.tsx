@@ -26,7 +26,7 @@ const EditTaskModal = ({ item, setTasks, setIsOpenEditModal }: { item:Task, setT
   }
 
   return (
-    <div className='flex items-center justify-center bg-black/30 fixed inset-0 z-64'>
+    <div onClick={() => {setIsOpenEditModal(false)}} className='flex items-center justify-center bg-black/30 fixed inset-0 z-64'>
       <div className='flex flex-col gap-4 p-6 bg-[#FFFFFF] rounded-xl shadow-[0_0_8px_rgba(0,0,0,0.1)]   dark:bg-gray-600'>
         <div className='flex justify-between w-[400px]'>
           <h3 className='font-semibold text-xl text-[#404040]   dark:text-[#F5F5F5]'>Edit Task</h3>
