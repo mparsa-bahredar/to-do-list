@@ -1,16 +1,32 @@
 'use client'
 import React, { useState, useMemo } from 'react'
-import FilterModal from '../FilterModal/FilterModal'
-import AddTaskModal from '../AddTaskModal/AddTaskModal'
-import Add from '../../icons/Add'
-import { saveTasks, type Task } from '../../database/database'
+import FilterModal from './FilterModal'
+import AddTaskModal from './AddTaskModal'
+import Add from '../../../../public/icons/Add'
+import { saveTasks, type Task } from '../../../database/database'
 import debounce from 'lodash.debounce'
 
 
-const SearchFilter = ({setTasks, filters, setFilters}: {setTasks: React.Dispatch<React.SetStateAction<Task[]>>
-  filters: {search: string, priority: '' | 'High' | 'Medium' | 'Low', category: string, startTime?: number, endTime?: number}
-  setFilters: React.Dispatch<React.SetStateAction<{search: string, priority: '' | 'High' | 'Medium' | 'Low', category: string
-  startTime?: number, endTime?: number}>>}) => {
+interface IProps {
+  setTasks: (tasks: Task[] | ((prev: Task[]) => Task[])) => void;
+  filters: {
+    search: string;
+    priority: '' | 'High' | 'Medium' | 'Low';
+    category: string;
+    startTime?: number;
+    endTime?: number;
+  };
+  setFilters: React.Dispatch<React.SetStateAction<{
+    search: string;
+    priority: '' | 'High' | 'Medium' | 'Low';
+    category: string;
+    startTime?: number;
+    endTime?: number;
+  }>>;
+}
+
+
+const SearchFilter = ({setTasks, filters, setFilters}: IProps) => {
 
   const [title, setTitle] = useState<string>('')
   const [isOpenFilterModal, setIsOpenFilterModal] = useState(false)
@@ -53,7 +69,6 @@ const SearchFilter = ({setTasks, filters, setFilters}: {setTasks: React.Dispatch
     if (e.key === 'Enter') addTask()
   }
 
-  
 
   return(
     <div className='flex w-full justify-between relative'>
@@ -65,17 +80,21 @@ const SearchFilter = ({setTasks, filters, setFilters}: {setTasks: React.Dispatch
           Filter
         </button>
         <input onChange={onSearchChange} defaultValue={filters.search} type='text' placeholder='Search tasks...'
-        className='w-[320px] h-9 pl-2 font-regular text-sm text-left text-[#A3A3A3] bg-[#F5F5F5] outline-none focus:ring-1 
-        focus:ring-[#E4E4E4] rounded-lg   dark:text-[#F5F5F5] dark:bg-gray-500'/>
+        className='w-[320px] h-9 pl-2 font-regular text-sm text-left text-[#A3A3A3] placeholder:text-[#A3A3A3] bg-[#F5F5F5] rounded-lg 
+        outline-none focus:ring-1 focus:ring-[#E4E4E4]   
+        dark:text-[#F5F5F5] dark:bg-gray-500'/>
       </div>
       <div className='flex gap-2'>
-        <div className='flex p-1 pl-2 bg-[#F5F5F5] rounded-lg   dark:bg-gray-500'>
+        <div className='flex relative'>
           <input value={title} type="text" placeholder='Enter the task title' onKeyDown={handleTaskKeyDown} 
           onChange={(e) => {setTitle(e.target.value)}} 
-          className='font-regular text-sm text-[#A3A3A3] outline-none dark:text-[#F5F5F5]'/>
+          className='w-64 font-regular text-sm text-[#262626] indent-2 placeholder:text-[#A3A3A3] bg-[#F5F5F5] rounded-[8px] 
+          outline-none focus:ring-1 focus:ring-[#E4E4E4]
+          dark:bg-gray-500 dark:text-[#F5F5F5]'/>
           <button 
             onClick={() => setIsOpenAddModal(prev => !prev)} 
-            className='flex items-center gap-1 pr-2 pl-1 h-7 font-medium text-xs text-[#FFFFFF] bg-[#404040] rounded-lg cursor-pointer
+            className='flex items-center gap-1 pr-2 pl-1 h-7 font-medium text-xs text-[#FFFFFF] bg-[#404040] rounded-lg absolute top-1
+            right-1 cursor-pointer
             dark:bg-gray-800'>
             <Add className='w-4 h-4 text-[#FFFFFF]'/>
             <span>More</span>

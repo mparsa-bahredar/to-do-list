@@ -1,5 +1,5 @@
-import Header from '@/components/Header/Header'
-import './globals.css'
+import Header from '../components/layout/Header/Header'
+import './global.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -11,3 +11,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+

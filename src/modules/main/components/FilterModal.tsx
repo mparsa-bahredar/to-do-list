@@ -1,6 +1,6 @@
 'use client'
 import { getCategories } from '@/database/database'
-import Close from '../../icons/Close'
+import Close from '../../../../public/icons/Close'
 import React from 'react'
 import { useState } from 'react'
 import DatePicker from 'react-multi-date-picker'

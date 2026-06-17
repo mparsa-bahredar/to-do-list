@@ -1,8 +1,8 @@
 'use client'
-import Close from '../../icons/Close'
+import Close from '../../../../public/icons/Close'
 import React, { useState } from 'react'
-import { saveTasks, type Task, getCategories, saveCategories } from '../../database/database'
-import Asterisk from '@/icons/Asterisk'
+import { saveTasks, type Task, getCategories, saveCategories } from '../../../database/database'
+import Asterisk from '../../../../public/icons/Asterisk'
 import DatePicker from 'react-multi-date-picker'
 import TimePicker from 'react-multi-date-picker/plugins/time_picker'
 

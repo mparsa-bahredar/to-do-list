@@ -1,10 +1,10 @@
 'use client'
-
-import SearchFilter from "@/components/SearchFilter/SearchFilter";
-import TaskList from "@/components/ActiveTaskList/ActiveTaskList";
-import CompletedTaskList from "@/components/CompletedTaskList/CompletedTaskList";
+import SearchFilter from "../modules/main/components/SearchFilter";
+import ActiveTaskList from "../modules/main/components/ActiveTaskList";
+import CompletedTaskList from "../modules/main/components/CompletedTaskList";
 import { useState, useEffect } from "react";
 import { getTasks, type Task } from "@/database/database";
+
 
 export default function App() {
 
@@ -52,10 +52,11 @@ export default function App() {
         <div className="flex flex-col gap-4 w-[960px] p-4 bg-[#FFFFFF] rounded-lg   dark:bg-gray-600">
           <SearchFilter setTasks={setTasks} filters={filters} setFilters={setFilters}/>
           <div className="w-full h-[1px] bg-[#E4E4E4] rounded-[48px]"></div>
-          <TaskList setTasks={setTasks} activeTasks={activeTasks}/>
+          <ActiveTaskList setTasks={setTasks} activeTasks={activeTasks}/>
           <CompletedTaskList setTasks={setTasks} completedTasks={completedTasks}/>
         </div>
       </div>
     </div>
   );
 }
+

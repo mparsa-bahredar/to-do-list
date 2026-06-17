@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
-import { useTheme } from '../../utils/hooks/useTheme/useTheme'
-import { Moon } from '@/icons/Moon'
-import { Sun } from '@/icons/Sun'
+import { useTheme } from '../../../utils/hooks/useTheme/useTheme'
+import { Moon } from '../../../../public/icons/Moon'
+import { Sun } from '../../../../public/icons/Sun'
 
 const Header = () => {
   

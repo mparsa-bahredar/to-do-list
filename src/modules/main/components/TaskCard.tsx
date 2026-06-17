@@ -1,21 +1,26 @@
 'use client'
 import React, { useState } from 'react'
-import { type Task, getTasks, saveTasks } from '../../database/database'   
-import Delete from '../../icons/Delete'
-import Edit from '../../icons/Edit'
-import EditTaskModal from '../EditTaskModal/EditTaskModal'
-import DeleteTaskModal from '../DeleteTaskModal/DeleteTaskModal'
+import { type Task, saveTasks } from '../../../database/database'   
+import Delete from '../../../../public/icons/Delete'
+import Edit from '../../../../public/icons/Edit'
+import EditTaskModal from './EditTaskModal'
+import DeleteTaskModal from './DeleteTaskModal'
 
 
-const PRIORITY_STYLES: Record<Task['priority'], string> = {
+interface IProps{
+  item: Task;
+  setTasks: (tasks: Task[] | ((prev: Task[]) => Task[])) => void;
+}
+
+
+const PRIORITY_STYLES = {
   High: "text-[#EB5757] border-[#EB5757] bg-red-50   dark:bg-red-900/20",
   Medium: "text-amber-600 border-amber-600 bg-amber-50   dark:bg-amber-900/20",
   Low: "text-green-600 border-green-600 bg-green-50   dark:bg-green-900/20",
 };
 
 
-
-const TaskCard = ({ item, setTasks }: { setTasks:React.Dispatch<React.SetStateAction<Task[]>>, item: Task }) => {
+const TaskCard = ({item, setTasks}: IProps) => {
 
   const [isOpenEditModal, setIsOpenEditModal] = useState<boolean>(false)
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(false)
@@ -53,7 +58,7 @@ const TaskCard = ({ item, setTasks }: { setTasks:React.Dispatch<React.SetStateAc
         <p>{item.description}</p>
       </div>
       <div className='flex justify-center w-24'>
-        <div className={`py-1 px-4 text-sm font-regular ${PRIORITY_STYLES[item.priority]} rounded-[48px]`}>
+        <div className={`py-1 px-4 text-xs font-regular ${PRIORITY_STYLES[item.priority]} rounded-[48px]`}>
           <span>{item.priority}</span>
         </div>
       </div>
@@ -68,10 +73,10 @@ const TaskCard = ({ item, setTasks }: { setTasks:React.Dispatch<React.SetStateAc
       </div>
       <div className='flex gap-2 pl-10'>
         <button onClick={() => {setIsOpenEditModal((prev) => !prev)}} className='cursor-pointer'>
-          <Edit className='w-4 h-4 text-[#404040]   dark:text-[#F5F5F5]'/>
+          <Edit className='w-5 h-5 text-[#404040]   dark:text-[#F5F5F5]'/>
         </button>
         <button onClick={() => {setIsOpenDeleteModal((prev) => !prev)}} className='cursor-pointer'>
-          <Delete className='w-4 h-4 text-[#EB5757]'/>
+          <Delete className='w-5 h-5 text-[#EB5757]'/>
         </button>
       </div>
       {
