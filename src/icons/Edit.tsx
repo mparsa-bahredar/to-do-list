@@ -1,0 +1,19 @@
+const Edit = ({ className }: { className?: string }) => {
+  return (
+    <svg 
+      className={className}
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor"
+      strokeWidth="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M11 4H4C3.44772 4 3 4.44772 3 5V19C3 19.5523 3.44772 20 4 20H18C18.5523 20 19 19.5523 19 19V12" />
+      <path d="M18.5 2.5C18.8978 2.10217 19.4374 1.87868 20 1.87868C20.5626 1.87868 21.1022 2.10217 21.5 2.5C21.8978 2.89782 22.1213 3.43739 22.1213 4C22.1213 4.56261 21.8978 5.10217 21.5 5.5L12 15L8 16L9 12L18.5 2.5Z" />
+    </svg>
+  )
+}
+
+export default Edit;
