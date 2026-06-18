@@ -2,7 +2,7 @@
 const TaskTableTitle = () => {
 
   return (
-    <div className='flex py-2 bg-[#E4E4E4] rounded-[8px]'>
+    <div className='flex py-2 bg-[#E4E4E4] rounded-[8px]   dark:bg-[#005A77]'>
       <div className='flex pl-8 w-[148px]'>
         <h4 className='font-medium text-sm text-[#404040]   dark:text-[#F5F5F5]'>Title</h4>
       </div>

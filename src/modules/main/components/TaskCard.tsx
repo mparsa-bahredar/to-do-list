@@ -47,7 +47,7 @@ const TaskCard = ({item, setTasks}: IProps) => {
 
 
   return(
-    <div className='flex items-center w-full p-2 bg-[#FFFFFF] rounded-lg   dark:bg-gray-600'>
+    <div className='flex items-center w-full p-2 bg-[#FFFFFF] rounded-lg   dark:bg-[#003C50]'>
       <div className='pr-3'>
         <input onChange={toggleComplete} type="checkbox" checked={item.completed} className='w-3 h-3 cursor-pointer'/>
       </div>
