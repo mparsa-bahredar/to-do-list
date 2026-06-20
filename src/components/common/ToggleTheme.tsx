@@ -1,7 +1,7 @@
 "use client";
+import { useTheme } from "@/utils/helper/useTheme";
 import { Moon } from "../../../public/icons/Moon";
 import { Sun } from "../../../public/icons/Sun";
-import { useTheme } from "../../utils/hooks/useTheme/useTheme";
 
 
 const ToggleTheme = () => {

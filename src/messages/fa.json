@@ -1,5 +1,28 @@
 {
-  "main":{
-    "toDoList": "لیست وظایف"
+  "mainPage":{
+    "toDoList": "لیست وظایف",
+    "filters": "فیلتر ها",
+    "searchPlc": "نام تسک را وارد کنید",
+    "titlePlc": "عنوان تسک را وارد کنید",
+    "moreBtn": "بیشتر",
+    "addBtn": "افزودن",
+    "activeTasks": "تسک های فعال",
+    "completedTasks": "تسک های انجام شده",
+
+    "title": "عنوان",
+    "description": "توضیحات",
+    "descriptionPlc": "توضیحات تسک را وارد کنید",
+    "priority": "سطح",
+    "priorityPlc": "سطح تسک را انتخاب کنید",
+    "category": "دسته بندی",
+    "categoryPlc": "دسته بندی تسک را انتخاب کنید",
+    "startTime": "تاریخ شروع",
+    "startTimePlc": "تاریخ شروع تسک را انتخاب کنید",
+    "endTime": "تاریخ پایان",
+    "endTimePlc": "تاریخ پایان تسک را انتخاب کنید",
+    "actions": "عملیات",
+    "thereIsNoTasks": "تسکی وجود ندارد",
+
+    "addTask": "افزودن تسک"
   }
 }

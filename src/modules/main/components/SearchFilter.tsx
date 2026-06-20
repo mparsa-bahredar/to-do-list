@@ -1,53 +1,54 @@
 'use client'
-import React, { useState, useMemo } from 'react'
+import React, { useCallback, useState } from 'react'
+import debounce from 'lodash.debounce'
 import FilterModal from './FilterModal'
 import AddTaskModal from './AddTaskModal'
 import Add from '../../../../public/icons/Add'
-import { saveTasks, type Task } from '../../../database/database'
-import debounce from 'lodash.debounce'
+import { saveTasks } from '../../../database/database'
+import { useLocale, useTranslations } from 'next-intl'
+import { Task } from '@/types/types'
 
 
 interface IProps {
-  setTasks: (tasks: Task[] | ((prev: Task[]) => Task[])) => void;
-  filters: {
-    search: string;
-    priority: '' | 'High' | 'Medium' | 'Low';
-    category: string;
-    startTime?: number;
-    endTime?: number;
-  };
-  setFilters: React.Dispatch<React.SetStateAction<{
-    search: string;
-    priority: '' | 'High' | 'Medium' | 'Low';
-    category: string;
-    startTime?: number;
-    endTime?: number;
-  }>>;
+  setTasks: (tasks: Task[] | ((prev: Task[]) => Task[])) => void
+  filters: {search: string, priority: '' | 'High' | 'Medium' | 'Low', category: string, startTime?: number, endTime?: number}
+  setFilters: React.Dispatch<
+    React.SetStateAction<{
+      search: string
+      priority: '' | 'High' | 'Medium' | 'Low'
+      category: string
+      startTime?: number
+      endTime?: number
+    }>
+  >
 }
 
 
-const SearchFilter = ({setTasks, filters, setFilters}: IProps) => {
+const SearchFilter = ({ setTasks, filters, setFilters }: IProps) => {
 
+  const t = useTranslations("mainPage")
+  const locale = useLocale();
 
-  const [title, setTitle] = useState<string>('')
+  const [title, setTitle] = useState('')
+  const [searchValue, setSearchValue] = useState(filters.search)
   const [isOpenFilterModal, setIsOpenFilterModal] = useState(false)
   const [isOpenAddModal, setIsOpenAddModal] = useState(false)
 
-  const debouncedSearch = useMemo(
-    () =>
-      debounce((value: string) => {
-        setFilters(prev => ({
-          ...prev,
-          search: value
-        }))
-      }, 2000),
+  const debouncedSearch = useCallback(
+    debounce((value: string) => {
+      setFilters(prev => ({
+        ...prev,
+        search: value
+      }))
+    }, 3000),
     [setFilters]
   )
 
-  const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    debouncedSearch(e.target.value)
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setSearchValue(value)
+    debouncedSearch(value)
   }
-
 
   const addTask = () => {
     if (!title.trim()) return
@@ -55,69 +56,73 @@ const SearchFilter = ({setTasks, filters, setFilters}: IProps) => {
       id: Date.now(),
       title,
       description: '',
-      completed: false, 
+      completed: false,
       priority: 'Medium',
       category: ''
     }
-    setTasks((prev) => {
+    setTasks(prev => {
       const updated = [...prev, newTask]
       saveTasks(updated)
       return updated
     })
     setTitle('')
   }
+
   const handleTaskKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') addTask()
   }
 
 
-  return(
+  return (
     <div className='flex w-full justify-between relative'>
       <div className='flex items-center gap-2'>
-        <button 
-          onClick={() => setIsOpenFilterModal(prev => !prev)}
-          className='px-3 h-10 font-medium text-sm text-[#404040] border border-[2px] border-[#E4E4E4] rounded-lg cursor-pointer
-          dark:text-[#F5F5F5] dark:border-[#F5F5F5]'>
-          Filter
+        <button
+        onClick={() => setIsOpenFilterModal(prev => !prev)}
+        className='px-3 h-10 font-medium text-sm text-[#404040] border border-[2px] border-[#E4E4E4] rounded-lg cursor-pointer 
+        dark:text-[#F5F5F5] dark:border-[#F5F5F5]'>
+          {t("filters")}
         </button>
-        <input onChange={onSearchChange} defaultValue={filters.search} type='text' placeholder='Search tasks...'
-        className='w-64 h-10 pl-2 font-regular text-sm text-left text-[#A3A3A3] placeholder:text-[#A3A3A3] bg-[#F5F5F5] rounded-lg 
-        outline-none focus:ring-1 focus:ring-[#E4E4E4]   
+        <input
+        value={searchValue}
+        onChange={handleSearchChange}
+        type='text'
+        placeholder={t("searchPlc")}
+        className='w-64 h-10 pl-2 font-regular text-sm text-[#A3A3A3] placeholder:text-[#A3A3A3] indent-4 bg-[#F5F5F5] rounded-lg 
+        outline-none focus:ring-1 focus:ring-[#E4E4E4] 
         dark:text-[#F5F5F5] dark:placeholder:text-[#A3A3A3] dark:bg-[#002D3C]'/>
       </div>
       <div className='flex items-center gap-2'>
         <div className='flex relative'>
-          <input value={title} type="text" placeholder='Enter the task title' onKeyDown={handleTaskKeyDown} 
-          onChange={(e) => {setTitle(e.target.value)}} 
-          className='w-64 h-10 font-regular text-sm text-[#262626] indent-2 placeholder:text-[#A3A3A3] bg-[#F5F5F5] rounded-[8px] 
-          outline-none focus:ring-1 focus:ring-[#E4E4E4]
+          <input
+          value={title}
+          type='text'
+          placeholder={t("titlePlc")}
+          onKeyDown={handleTaskKeyDown}
+          onChange={e => setTitle(e.target.value)}
+          className='w-64 h-10 font-regular text-sm text-[#262626] indent-4 placeholder:text-[#A3A3A3] bg-[#F5F5F5] rounded-[8px] 
+          outline-none focus:ring-1 focus:ring-[#E4E4E4] 
           dark:text-[#F5F5F5] dark:placeholder:text-[#A3A3A3] dark:bg-[#002D3C]'/>
-          <button 
-            onClick={() => setIsOpenAddModal(prev => !prev)} 
-            className='flex items-center gap-1 pr-2 pl-1 h-7 font-medium text-xs text-[#FFFFFF] bg-[#404040] rounded-lg absolute top-1.5
-            right-1.5 cursor-pointer
-            dark:bg-[#005A77]'>
-            <Add className='w-4 h-4 text-[#FFFFFF]'/>
-            <span>More</span>
+          <button
+          onClick={() => setIsOpenAddModal(prev => !prev)}
+          className={`flex items-center gap-1 px-2 h-7 font-medium text-xs text-[#262626] bg-[#FFFFFF] rounded-lg cursor-pointer 
+          absolute top-1.5
+          ${locale === "en" ? " right-1.5" : "left-1.5"}
+          dark:bg-[#005A77]`}>
+            <Add className='w-4 h-4'/>
+            <span>{t("moreBtn")}</span>
           </button>
         </div>
-        <button onClick={addTask} className='h-9 px-3 font-medium text-sm text-[#FFFFFF] bg-[#0096C7] rounded-lg cursor-pointer'>
-          Add
+        <button
+        onClick={addTask}
+        className='h-9 px-3 font-medium text-sm text-[#FFFFFF] bg-[#0096C7] rounded-lg cursor-pointer'>
+          {t("addBtn")}
         </button>
       </div>
-
       {isOpenFilterModal && (
-        <FilterModal
-          filters={filters}
-          setFilters={setFilters}
-          setIsOpenFilterModal={setIsOpenFilterModal}
-        />
+        <FilterModal filters={filters} setFilters={setFilters} setIsOpenFilterModal={setIsOpenFilterModal}/>
       )}
       {isOpenAddModal && (
-        <AddTaskModal
-          setTasks={setTasks}
-          setIsOpenAddModal={setIsOpenAddModal}
-        />
+        <AddTaskModal setTasks={setTasks} setIsOpenAddModal={setIsOpenAddModal}/>
       )}
     </div>
   )

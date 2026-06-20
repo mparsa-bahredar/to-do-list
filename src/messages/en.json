@@ -1,5 +1,28 @@
 {
-  "main":{
-    "toDoList": "To Do List"
+  "mainPage":{
+    "toDoList": "To Do List",
+    "filters": "Filters",
+    "searchPlc": "Enter the task name",
+    "titlePlc": "Enter the task title",
+    "moreBtn": "More",
+    "addBtn": "Add",
+    "activeTasks": "Active Tasks",
+    "completedTasks": "Completed Tasks",
+
+    "title": "Title",
+    "description": "Description",
+    "descriptionPlc": "Enter the task description",
+    "priority": "Priority",
+    "priorityPlc": "Enter the task priority",
+    "category": "Category",
+    "categoryPlc": "Enter the task category",
+    "startTime": "Start Time",
+    "startTimePlc": "Enter the task start time",
+    "endTime": "End Time",
+    "endTimePlc": "Enter the task end time",
+    "actions": "Actions",
+    "thereIsNoTasks": "There is no tasks",
+
+    "addTask": "Add Task"
   }
 }

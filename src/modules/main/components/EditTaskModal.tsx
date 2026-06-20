@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import Close from '../../../../public/icons/Close'
-import { getCategories, saveTasks, type Task } from '../../../database/database'
+import { getCategories, saveTasks } from '../../../database/database'
 import DatePicker from 'react-multi-date-picker'
 import TimePicker from 'react-multi-date-picker/plugins/time_picker'
+import { Task } from '@/types/types'
 
 
 

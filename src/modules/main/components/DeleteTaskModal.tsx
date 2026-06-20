@@ -1,5 +1,5 @@
+import { Task } from '@/types/types';
 import React from 'react'
-import { type Task } from '../../../database/database'
 
 
 const DeleteTaskModal = ({ item, onDelete, setIsOpenDeleteModal }: { item: Task, onDelete: () => void, 

@@ -33,8 +33,9 @@ const FilterModal = ({ filters, setFilters, setIsOpenFilterModal }: {
 
   return (
     <>
-      <div onClick={() => setIsOpenFilterModal(false)} className='fixed inset-0 z-40'/>
-      <div className='flex flex-col gap-4 p-6 bg-[#FFFFFF] shadow-[0_0_8px_rgba(0,0,0,0.1)] rounded-xl absolute top-10 left-0 z-64   
+      <div onClick={() => setIsOpenFilterModal(false)} className='bg-black/20 fixed inset-0 z-40'/>
+      <div className='flex flex-col gap-4 p-6 bg-[#FFFFFF] shadow-[0_0_8px_rgba(0,0,0,0.1)] rounded-xl -translate-x-1/2 
+      -translate-y-1/2 fixed top-1/2 left-1/2 z-64   
       dark:bg-gray-600'>
         <div className='flex justify-between items-center'>
           <h3 className='font-semibold text-xl text-[#404040]   dark:text-[#F5F5F5]'>Filters</h3>
