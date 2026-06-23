@@ -1,10 +1,11 @@
 'use client'
 import React, { useState } from 'react'
-import { type Task, saveTasks } from '../../../database/database'   
+import { saveTasks } from '../../../database/database'   
 import Delete from '../../../../public/icons/Delete'
 import Edit from '../../../../public/icons/Edit'
 import EditTaskModal from './EditTaskModal'
 import DeleteTaskModal from './DeleteTaskModal'
+import { Task } from '@/types/types'
 
 
 interface IProps{
@@ -47,7 +48,7 @@ const TaskCard = ({item, setTasks}: IProps) => {
 
 
   return(
-    <div className='flex items-center w-full p-2 bg-[#FFFFFF] rounded-lg   dark:bg-[#003C50]'>
+    <div className='flex items-center w-full p-2 bg-[#FFFFFF] rounded-lg   dark:bg-[#0D3C61]'>
       <div className='pr-3'>
         <input onChange={toggleComplete} type="checkbox" checked={item.completed} className='w-3 h-3 cursor-pointer'/>
       </div>

@@ -15,9 +15,9 @@ const ToggleTheme = () => {
     >
       {theme == "light" ? (
         <div
-          className="text-[#0D3B66] border border-[#0D3B66] rounded-full transition-all duration-100 p-2 flex items-center 
+          className="text-[#2196F3] border border-[#2196F3] rounded-full transition-all duration-100 p-2 flex items-center 
         justify-center   
-        hover:text-[#FFFFFF] hover:bg-[#0D3B66]"
+        hover:text-[#FFFFFF] hover:bg-[#2196F3]"
         >
           <Moon className="w-5 h-5   md:w-[24px] md:h-[24px]" />
         </div>

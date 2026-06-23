@@ -36,17 +36,17 @@ const FilterModal = ({ filters, setFilters, setIsOpenFilterModal }: {
       <div onClick={() => setIsOpenFilterModal(false)} className='bg-black/20 fixed inset-0 z-40'/>
       <div className='flex flex-col gap-4 p-6 bg-[#FFFFFF] shadow-[0_0_8px_rgba(0,0,0,0.1)] rounded-xl -translate-x-1/2 
       -translate-y-1/2 fixed top-1/2 left-1/2 z-64   
-      dark:bg-gray-600'>
+      dark:bg-[#0D3C61]'>
         <div className='flex justify-between items-center'>
           <h3 className='font-semibold text-xl text-[#404040]   dark:text-[#F5F5F5]'>Filters</h3>
           <div onClick={() => setIsOpenFilterModal(false)}>
-            <Close className='w-5 h-5 text-[#404040] cursor-pointer   dark:text-[#F5F5F5]'/>
+            <Close className='w-6 h-6 text-[#404040] cursor-pointer   dark:text-[#F5F5F5]'/>
           </div>
         </div>
         <div className='flex flex-col gap-2'>
           <h4 className='w-full font-medium text-base text-left text-[#404040]   dark:text-[#F5F5F5]'>Priority :</h4>
           <select value={tempFilters.priority} onChange={handlePriorityChange} className='py-2 px-2 w-[400px] font-regular text-sm 
-          text-[#404040] border border-[#E4E4E4] rounded-xl   dark:text-[#F5F5F5] dark:bg-gray-500'>
+          text-[#404040] border border-[#E4E4E4] rounded-xl   dark:text-[#F5F5F5] dark:bg-[#0A2D49] dark:border-[#145A92]'>
             <option value=''>All</option>
             <option value="High">High</option>
             <option value="Medium">Medium</option>
@@ -58,8 +58,8 @@ const FilterModal = ({ filters, setFilters, setIsOpenFilterModal }: {
           <select
             value={tempFilters.category}
             onChange={(e) => setTempFilters(prev => ({ ...prev, category: e.target.value }))}
-            className='w-[400px] h-9 px-2 font-regular text-sm text-[#404040] border border-[#E4E4E4] rounded-xl dark:bg-gray-500 dark:text-[#F5F5F5]'
-          >
+            className='w-[400px] h-9 px-2 font-regular text-sm text-[#404040] border border-[#E4E4E4] rounded-xl 
+            dark:text-[#F5F5F5] dark:bg-[#0A2D49] dark:border-[#145A92]'>
             <option value="">-- All categories --</option>
             {categories.map((cat) => (
               <option key={cat} value={cat}>{cat}</option>
@@ -73,7 +73,7 @@ const FilterModal = ({ filters, setFilters, setIsOpenFilterModal }: {
           onChange={(date) => setTempFilters(prev => ({...prev, startTime: date?.toDate().getTime()}))}
           plugins={[<TimePicker position="bottom" />]}
           format="YYYY/MM/DD HH:mm" 
-          inputClass='w-full h-9 text-[#404040] indent-2 bg-[#F5F5F5] rounded-xl   dark:text-[#F5F5F5] dark:bg-gray-500'
+          inputClass='w-full h-9 text-[#404040] indent-2 bg-[#F5F5F5] rounded-xl   dark:text-[#F5F5F5] dark:bg-[#0A2D49]'
           containerClassName="custom-calendar"/>
         </div>
         <div className="flex flex-col gap-2">
@@ -82,10 +82,10 @@ const FilterModal = ({ filters, setFilters, setIsOpenFilterModal }: {
           onChange={(date) => setTempFilters(prev => ({...prev, endTime: date?.toDate().getTime()}))}
           plugins={[<TimePicker position="bottom" />]}
           format="YYYY/MM/DD HH:mm" 
-          inputClass='w-full h-9 text-[#404040] indent-2 bg-[#F5F5F5] rounded-xl   dark:text-[#F5F5F5] dark:bg-gray-500'
+          inputClass='w-full h-9 text-[#404040] indent-2 bg-[#F5F5F5] rounded-xl   dark:text-[#F5F5F5] dark:bg-[#0A2D49]'
           containerClassName="custom-calendar"/>
         </div>
-        <button onClick={onApplyFilters} className='w-full py-2 font-medium text-sm text-[#FFFFFF] bg-[#1E88E5] 
+        <button onClick={onApplyFilters} className='w-full py-2 font-medium text-sm text-[#FFFFFF] bg-[#2196F3] 
         rounded-xl cursor-pointer'>
           See Results
         </button>

@@ -15,7 +15,7 @@ const CompletedTaskList = ({ setTasks, completedTasks }:
   return (
     <div className='flex flex-col gap-3 items-start'>
       <h3 className='font-semibold text-base text-[#404040]   dark:text-[#F5F5F5]'>{t("completedTasks")}</h3>
-      <div className='flex flex-col gap-3 w-full p-3 rounded-lg bg-[#F5F5F5]   dark:bg-[#002D3C]'>
+      <div className='flex flex-col gap-3 w-full p-3 rounded-lg bg-[#F5F5F5]   dark:bg-[#0A2D49]'>
         <TaskTableTitle/>
         <div className='flex flex-col gap-2 w-full max-h-[160px] overflow-y-auto scrollbar'>
           {completedTasks.length === 0 ? (
