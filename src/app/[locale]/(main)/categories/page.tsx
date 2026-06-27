@@ -1,4 +1,4 @@
-import CategoriesView from "@/modules/categories/views/CategoriesView"
+import CategoriesView from "@/modules/Categories/views/CategoriesView"
 
 
 

@@ -1,11 +1,11 @@
 'use client'
-import SearchFilter from "../../../modules/main/components/SearchFilter";
-import ActiveTaskList from "../../../modules/main/components/ActiveTaskList";
-import CompletedTaskList from "../../../modules/main/components/CompletedTaskList";
 import { useState, useEffect } from "react";
 import { getTasks } from "@/database/database";
 import { useTranslations } from "next-intl";
 import { Task } from "@/types/types";
+import SearchFilter from "../components/SearchFilter";
+import ActiveTaskList from "../components/ActiveTaskList";
+import CompletedTaskList from "../components/CompletedTaskList";
 
 
 const MainView = () => {
