@@ -26,7 +26,7 @@ interface IProps {
 
 const SearchFilter = ({ setTasks, filters, setFilters }: IProps) => {
 
-  const t = useTranslations("mainPage")
+  const t = useTranslations("main")
   const locale = useLocale();
 
   const [title, setTitle] = useState('')
@@ -87,7 +87,7 @@ const SearchFilter = ({ setTasks, filters, setFilters }: IProps) => {
         onChange={handleSearchChange}
         type='text'
         placeholder={t("searchPlc")}
-        className='w-64 h-10 pl-2 font-regular text-sm text-[#A3A3A3] placeholder:text-[#A3A3A3] indent-4 bg-[#F5F5F5] rounded-lg 
+        className='w-64 h-10 font-regular text-sm text-[#A3A3A3] placeholder:text-[#A3A3A3] indent-3 bg-[#F5F5F5] rounded-lg 
         outline-none focus:ring-1 focus:ring-[#E4E4E4] 
         dark:text-[#F5F5F5] dark:placeholder:text-[#A3A3A3] dark:bg-[#0A2D49]'/>
       </div>
@@ -99,15 +99,15 @@ const SearchFilter = ({ setTasks, filters, setFilters }: IProps) => {
           placeholder={t("titlePlc")}
           onKeyDown={handleTaskKeyDown}
           onChange={e => setTitle(e.target.value)}
-          className='w-64 h-10 font-regular text-sm text-[#262626] indent-4 placeholder:text-[#A3A3A3] bg-[#F5F5F5] rounded-[8px] 
+          className='w-64 h-10 font-regular text-sm text-[#262626] indent-3 placeholder:text-[#A3A3A3] bg-[#F5F5F5] rounded-[8px] 
           outline-none focus:ring-1 focus:ring-[#E4E4E4] 
           dark:text-[#F5F5F5] dark:placeholder:text-[#A3A3A3] dark:bg-[#0A2D49]'/>
           <button
           onClick={() => setIsOpenAddModal(prev => !prev)}
-          className={`flex items-center gap-1 px-2 h-7 font-medium text-xs text-[#FFFFFF] bg-[#FFFFFF] rounded-lg cursor-pointer 
+          className={`flex items-center gap-1 px-2 h-7 font-medium text-xs text-[#262626] bg-[#FFFFFF] rounded-lg cursor-pointer 
           absolute top-1.5
           ${locale === "en" ? " right-1.5" : "left-1.5"}
-          dark:bg-[#145A92]`}>
+          dark:text-[#FFFFFF] dark:bg-[#145A92]`}>
             <Add className='w-4 h-4'/>
             <span>{t("moreBtn")}</span>
           </button>

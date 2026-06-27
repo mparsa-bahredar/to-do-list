@@ -25,15 +25,11 @@ export default function LanguageSwitcher() {
         defaultValue={locale}
         disabled={isPending}
         onChange={onSelectChange}
-        className={`w-full  border border-[#2196F3]
-          appearance-none cursor-pointer outline-none
-          text-[#2196F3] bg-transparent
-          hover:bg-[#2196F3] hover:text-white transition-colors duration-300
-          rounded-full px-5  h-full text-[16px] font-semibold
-          disabled:opacity-50 disabled:cursor-not-allowed
-          dark:text-[#E4E4E4] dark:border-[#E4E4E4]
-        `}
-      >
+        className="w-full h-full py-2 px-4 text-[#2196F3] border border-[#2196F3] appearance-none cursor-pointer outline-none
+        bg-transparent transition-colors duration-300 rounded-full text-sm font-semibold
+        disabled:opacity-50 disabled:cursor-not-allowed
+        hover:bg-[#2196F3] hover:text-white 
+        dark:text-[#E4E4E4] dark:border-[#E4E4E4]">
         <option value="fa" className="text-[#2196F3] bg-white">
           FA
         </option>

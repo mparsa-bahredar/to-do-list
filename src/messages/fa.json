@@ -1,5 +1,5 @@
 {
-  "mainPage":{
+  "main":{
     "toDoList": "لیست وظایف",
     "filters": "فیلتر ها",
     "searchPlc": "نام تسک را وارد کنید",
@@ -24,5 +24,15 @@
     "thereIsNoTasks": "تسکی وجود ندارد",
 
     "addTask": "افزودن تسک"
+  },
+  "sidebar":{
+    "main": "صفحه اصلی",
+    "categories": "دسته بندی ها"
+  },
+  "categories":{
+    "title": "عنوان",
+    "searchPlc": "نام دسته بندی را وارد کنید",
+    "titlePlc": "عنوان دسته بندی را وارد کنید",
+    "addBtn": "افزودن"
   }
 }

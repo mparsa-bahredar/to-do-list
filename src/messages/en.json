@@ -1,5 +1,5 @@
 {
-  "mainPage":{
+  "main":{
     "toDoList": "To Do List",
     "filters": "Filters",
     "searchPlc": "Enter the task name",
@@ -24,5 +24,15 @@
     "thereIsNoTasks": "There is no tasks",
 
     "addTask": "Add Task"
+  },
+  "sidebar":{
+    "main": "Main Page",
+    "categories": "Categories"
+  },
+  "categories":{
+    "title": "Title",
+    "searchPlc": "Enter the category name",
+    "titlePlc": "Enter the category title",
+    "addBtn": "Add"
   }
 }

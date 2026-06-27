@@ -14,12 +14,13 @@ const AddTaskModal = ({ setTasks, setIsOpenAddModal }: {
     setIsOpenAddModal: (value: boolean) => void 
 }) => {
 
-    const t = useTranslations("mainPage");
+    
+    const t = useTranslations("main");
 
     const [title, setTitle] = useState<string>('')
     const [description, setDescription] = useState<string>('')
     const [priority, setPriority] = useState<'High' | 'Medium' | 'Low'>('Medium')
-    const [categories, setCategories] = useState(getCategories())
+    const [categories, setCategories] = useState<{id: number, title: string}[]>(getCategories())
     const [category, setCategory] = useState<string>('')
     const [newCategory, setNewCategory] = useState<string>('')
     const [startTime, setStartTime] = useState<number>()
@@ -28,12 +29,14 @@ const AddTaskModal = ({ setTasks, setIsOpenAddModal }: {
 
     const addNewCategory = () => {
         if (!newCategory.trim()) return
-        if (!categories.includes(newCategory.trim())) {
-            const updated = [...categories, newCategory.trim()]
+        if (!categories.some(c => c.title === newCategory.trim())) {
+            const newId = Math.max(...categories.map(c => c.id), 0) + 1
+            const updated = [...categories, { id: newId, title: newCategory.trim() }]
             saveCategories(updated)   
             setCategories(updated)
         }
-        setCategory(newCategory.trim())
+        const found = categories.find(c => c.title === newCategory.trim())
+        setCategory(found ? found.title : newCategory.trim())
         setNewCategory('')
     }
     const handleNewCategoryKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -129,8 +132,8 @@ const AddTaskModal = ({ setTasks, setIsOpenAddModal }: {
                             className='w-[400px] h-9 px-2 font-regular text-sm text-[#404040] indent-3 border border-[#E4E4E4] rounded-xl 
                             dark:text-[#F5F5F5] dark:bg-[#0A2D49] dark:border-[#145A92]'>
                                 <option value="">-- Select category (optional) --</option> 
-                                {categories.map((cat) => (
-                                    <option key={cat} value={cat}>{cat}</option>
+                                {categories.map((item) => (
+                                    <option value={item.title} key={item.id}>{item.title}</option>
                                 ))}
                             </select>
                             <div className='flex gap-2'>

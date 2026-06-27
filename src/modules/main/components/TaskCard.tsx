@@ -49,11 +49,11 @@ const TaskCard = ({item, setTasks}: IProps) => {
 
   return(
     <div className='flex items-center w-full p-2 bg-[#FFFFFF] rounded-lg   dark:bg-[#0D3C61]'>
-      <div className='pr-3'>
+      <div className='flex items-center gap-2 pr-3'>
         <input onChange={toggleComplete} type="checkbox" checked={item.completed} className='w-3 h-3 cursor-pointer'/>
-      </div>
-      <div className='w-[116px] text-sm font-medium text-[#404040]   dark:text-[#F5F5F5]'>
-        <h4>{item.title}</h4>
+        <div className='w-[116px] text-sm font-medium text-[#404040]   dark:text-[#F5F5F5]'>
+          <h4>{item.title}</h4>
+        </div>
       </div>
       <div  className='w-[260px] text-sm font-regular text-[#404040]   dark:text-[#F5F5F5]'>
         <p>{item.description}</p>

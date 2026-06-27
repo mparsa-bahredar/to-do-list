@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 
 const TaskTableTitle = () => {
 
-  const t = useTranslations("mainPage");
+  const t = useTranslations("main");
 
 
   return (

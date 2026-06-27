@@ -8,3 +8,8 @@ export type Task = {
     startTime?: number;
     endTime?: number;
 }
+
+export type Category = {
+    id: number;
+    title: string;
+}

@@ -15,8 +15,8 @@ const DeleteTaskModal = ({ item, onDelete, setIsOpenDeleteModal }: { item: Task,
         <h4 className='font-medium text-base text-[#404040]   dark:text-[#F5F5F5]'>Are you sure to remove "{item.title}"?</h4>
         <div className='flex justify-center gap-2 w-full'>
           <button onClick={() => setIsOpenDeleteModal(false)} 
-          className='py-2 px-3 font-medium text-sm text-[#FFFFFF] border border-[#E4E4E4] rounded-lg cursor-pointer   
-          dark:border-[#E4E4E4]'>
+          className='py-2 px-3 font-medium text-sm text-[#A3A3A3] border border-[#A3A3A3] rounded-lg cursor-pointer   
+          dark:text-[#E4E4E4] dark:border-[#E4E4E4]'>
             Cancel
           </button>
           <button onClick={() => {onDelete(); setIsOpenDeleteModal(false)}}

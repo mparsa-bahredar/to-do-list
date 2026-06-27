@@ -9,7 +9,7 @@ const CompletedTaskList = ({ setTasks, completedTasks }:
 { setTasks:React.Dispatch<React.SetStateAction<Task[]>>, completedTasks: Task[] }) => {
 
 
-  const t = useTranslations("mainPage");
+  const t = useTranslations("main");
 
 
   return (

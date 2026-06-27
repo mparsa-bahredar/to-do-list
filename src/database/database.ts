@@ -1,31 +1,36 @@
-"use client"
-import { Task } from "@/types/types";
+import { Category, Task } from "@/types/types";
 
-
-const DEFAULT_CATEGORIES = [
-  'Work',
-  'Personal',
-  'Study',
-  'Health',
-  'Shopping',
+const getDefaultCategories = (locale: string) => [
+  {id:2, title: locale === "en" ? "Personal" : "شخصی"},
+  {id:1, title: locale === "en" ? "Work" : "کاری"},
+  {id:3, title: locale === "en" ? "Study" : "یادگیری"},
+  {id:4, title: locale === "en" ? "Health" : "سلامتی"},
+  {id:5, title: locale === "en" ? "Shopping" : "خرید"}
 ];
-
 
 export const getTasks = (): Task[] => {
   if (typeof window === 'undefined') return [];
   return JSON.parse(localStorage.getItem('tasks') || '[]');
 };
+
 export const saveTasks = (tasks: Task[]) => {
   if (typeof window === 'undefined') return;
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
-export const getCategories = (): string[] => {
-  if (typeof window === 'undefined') return DEFAULT_CATEGORIES;
+
+export const getCategories = (): Category[] => {
+  if (typeof window === 'undefined') return getDefaultCategories('en');
+  const locale = localStorage.getItem('locale') || 'en';
   const data = localStorage.getItem('categories');
-  if (!data) localStorage.setItem('categories', JSON.stringify(DEFAULT_CATEGORIES));
-  return JSON.parse(localStorage.getItem('categories')!);
+  if (!data) {
+    const defaults = getDefaultCategories(locale);
+    localStorage.setItem('categories', JSON.stringify(defaults));
+    return defaults;
+  }
+  return JSON.parse(data);
 };
-export const saveCategories = (categories: string[]): void => {
+
+export const saveCategories = (categories: Category[]): void => {
   if (typeof window === 'undefined') return;
   localStorage.setItem('categories', JSON.stringify(categories));
 };

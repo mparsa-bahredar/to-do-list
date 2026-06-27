@@ -11,7 +11,7 @@ interface IProps{
 
 const ActiveTaskList = ({setTasks, activeTasks}: IProps) => {
 
-  const t = useTranslations("mainPage");
+  const t = useTranslations("main");
 
   return (
     <div className='flex flex-col gap-3 items-start'>
