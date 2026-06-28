@@ -16,7 +16,7 @@ const ShowNumber = ({itemsPerPage, setItemsPerPage, setCurrentPage}: IProps) => 
                     setItemsPerPage(Number(e.target.value));
                     setCurrentPage(1);
                 }}
-                className="py-1 px-3 text-[#262626] border-2 border-[#E4E4E4] rounded-lg outline-none cursor-pointer
+                className="h-[28px] px-3 text-[14px] text-[#262626] border border-[#A3A3A3] rounded-lg outline-none cursor-pointer
                 dark:text-[#E4E4E4] dark:bg-[#0D3C61]">
                 <option value={5}>5</option>
                 <option value={10}>10</option>

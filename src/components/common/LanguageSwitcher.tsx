@@ -25,8 +25,8 @@ export default function LanguageSwitcher() {
         defaultValue={locale}
         disabled={isPending}
         onChange={onSelectChange}
-        className="w-full h-full py-2 px-4 text-[#2196F3] border border-[#2196F3] appearance-none cursor-pointer outline-none
-        bg-transparent transition-colors duration-300 rounded-full text-sm font-semibold
+        className="flex justify-center items-center w-8 h-8 font-medium text-sm text-[#2196F3] border border-[#2196F3] 
+        rounded-[8px] outline-none appearance-none cursor-pointer transition-colors duration-300 
         disabled:opacity-50 disabled:cursor-not-allowed
         hover:bg-[#2196F3] hover:text-white 
         dark:text-[#E4E4E4] dark:border-[#E4E4E4]">

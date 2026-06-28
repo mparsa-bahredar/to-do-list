@@ -1,4 +1,4 @@
-import MainView from "@/modules/Dashboard/views/MainView"
+import MainView from "@/modules/Panel/views/MainView"
 
 
 

@@ -32,6 +32,7 @@
     "applyFilters": "اعمال فیلتر ها"
   },
   "sidebar":{
+    "menu": "منو",
     "main": "صفحه اصلی",
     "categories": "دسته بندی ها"
   },

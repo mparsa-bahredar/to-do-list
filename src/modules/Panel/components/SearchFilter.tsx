@@ -113,7 +113,7 @@ const SearchFilter = ({ setTasks, filters, setFilters }: IProps) => {
         </div>
         <button
         onClick={addTask}
-        className='h-9 px-3 font-medium text-sm text-[#FFFFFF] bg-[#2196F3] rounded-lg cursor-pointer'>
+        className='h-10 px-3 font-medium text-sm text-[#FFFFFF] bg-[#2196F3] rounded-lg cursor-pointer'>
           {t("addBtn")}
         </button>
       </div>

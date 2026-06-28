@@ -32,11 +32,11 @@ const CompletedTaskDataTable = ({tasks, setTasks, completedTasks}: IProps) => {
   const [itemsPerPage, setItemsPerPage] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const filteredCategories = tasks.filter((item) => item.title.toLowerCase().includes(search.toLowerCase()));
+  const filteredTasks = completedTasks.filter((item) => item.title.toLowerCase().includes(search.toLowerCase()));
 
-  const totalPages = Math.ceil(filteredCategories.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredTasks.length / itemsPerPage);
 
-  const paginatedCategories = filteredCategories.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const paginatedTasks = filteredTasks.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
 
   return (
@@ -45,12 +45,12 @@ const CompletedTaskDataTable = ({tasks, setTasks, completedTasks}: IProps) => {
       <div className='flex flex-col gap-3 w-full p-3 rounded-lg bg-[#F5F5F5]   dark:bg-[#0A2D49]'>
         <TaskTableTitle/>
         <div className='flex flex-col gap-2 w-full max-h-[160px] overflow-y-auto scrollbar'>
-          {completedTasks.length === 0 ? (
-            <div className='flex justify-center w-full h-24'>
+          {paginatedTasks.length === 0 ? (
+            <div className='flex justify-center w-full h-16'>
               <p className='font-regular text-base text-[#404040]   dark:text-[#F5F5F5]'>{t("thereIsNoTasks")}</p>
             </div>
           ) : (
-            completedTasks.map((item) => (
+            paginatedTasks.map((item) => (
               <TaskCard item={item} key={item.id} setTasks={setTasks}/>
             ))
           )}
