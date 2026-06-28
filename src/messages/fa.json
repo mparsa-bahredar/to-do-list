@@ -1,29 +1,35 @@
 {
   "main":{
-    "toDoList": "لیست وظایف",
+    "toDoList": "لیست انجام کار",
     "filters": "فیلتر ها",
-    "searchPlc": "نام تسک را وارد کنید",
-    "titlePlc": "عنوان تسک را وارد کنید",
+    "searchPlc": "نام کار را وارد کنید",
+    "titlePlc": "عنوان کار را وارد کنید",
     "moreBtn": "بیشتر",
     "addBtn": "افزودن",
-    "activeTasks": "تسک های فعال",
-    "completedTasks": "تسک های انجام شده",
+    "activeTasks": "کار های فعال",
+    "completedTasks": "کار های انجام شده",
 
     "title": "عنوان",
     "description": "توضیحات",
-    "descriptionPlc": "توضیحات تسک را وارد کنید",
+    "descriptionPlc": "توضیحات کار را وارد کنید",
     "priority": "سطح",
-    "priorityPlc": "سطح تسک را انتخاب کنید",
+    "priorityPlc": "سطح کار را انتخاب کنید",
     "category": "دسته بندی",
-    "categoryPlc": "دسته بندی تسک را انتخاب کنید",
+    "categoryPlc": "دسته بندی کار را انتخاب کنید",
     "startTime": "تاریخ شروع",
-    "startTimePlc": "تاریخ شروع تسک را انتخاب کنید",
+    "startTimePlc": "تاریخ شروع کار را انتخاب کنید",
     "endTime": "تاریخ پایان",
-    "endTimePlc": "تاریخ پایان تسک را انتخاب کنید",
+    "endTimePlc": "تاریخ پایان کار را انتخاب کنید",
     "actions": "عملیات",
-    "thereIsNoTasks": "تسکی وجود ندارد",
+    "thereIsNoTasks": "کاری وجود ندارد",
 
-    "addTask": "افزودن تسک"
+    "addTask": "افزودن کار",
+    "editTask": "ویرایش کار",
+    "saveBtn": "ذخیره",
+    "sureAboutDelete": "آیا از حذف این مورد اطمینان دارید؟",
+    "cancel": "انصراف",
+    "deleteBtn": "حذف",
+    "applyFilters": "اعمال فیلتر ها"
   },
   "sidebar":{
     "main": "صفحه اصلی",
@@ -31,6 +37,7 @@
   },
   "categories":{
     "title": "عنوان",
+    "actions": "عملیات",
     "searchPlc": "نام دسته بندی را وارد کنید",
     "titlePlc": "عنوان دسته بندی را وارد کنید",
     "addBtn": "افزودن"

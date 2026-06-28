@@ -9,7 +9,7 @@ const CategoriesTop = () => {
 
     return (
         <div>
-            <h1 className="font-bold text-[20px] text-[#262626]">{t("categories")}</h1>
+            <h1 className="font-bold text-[20px] text-[#262626]   dark:text-[#F5F5F5]">{t("categories")}</h1>
         </div>
     )
 

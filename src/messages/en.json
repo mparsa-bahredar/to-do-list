@@ -23,7 +23,13 @@
     "actions": "Actions",
     "thereIsNoTasks": "There is no tasks",
 
-    "addTask": "Add Task"
+    "addTask": "Add Task",
+    "editTask": "Edit Task",
+    "saveBtn": "Save",
+    "sureAboutDelete": "Are you sure about delete this item?",
+    "cancel": "Cancel",
+    "deleteBtn": "Delete",
+    "applyFilters": "Apply Filters"
   },
   "sidebar":{
     "main": "Main Page",
@@ -31,6 +37,7 @@
   },
   "categories":{
     "title": "Title",
+    "actions": "Actions",
     "searchPlc": "Enter the category name",
     "titlePlc": "Enter the category title",
     "addBtn": "Add"

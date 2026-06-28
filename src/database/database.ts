@@ -1,8 +1,8 @@
 import { Category, Task } from "@/types/types";
 
 const getDefaultCategories = (locale: string) => [
-  {id:2, title: locale === "en" ? "Personal" : "شخصی"},
   {id:1, title: locale === "en" ? "Work" : "کاری"},
+  {id:2, title: locale === "en" ? "Personal" : "شخصی"},
   {id:3, title: locale === "en" ? "Study" : "یادگیری"},
   {id:4, title: locale === "en" ? "Health" : "سلامتی"},
   {id:5, title: locale === "en" ? "Shopping" : "خرید"}

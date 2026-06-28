@@ -4,8 +4,8 @@ import { getTasks } from "@/database/database";
 import { useTranslations } from "next-intl";
 import { Task } from "@/types/types";
 import SearchFilter from "../components/SearchFilter";
-import ActiveTaskList from "../components/ActiveTaskList";
-import CompletedTaskList from "../components/CompletedTaskList";
+import ActiveTaskList from "../components/ActiveTaskDataTable";
+import CompletedTaskList from "../components/CompletedTaskDataTable";
 
 
 const MainView = () => {
@@ -14,7 +14,7 @@ const MainView = () => {
   const t = useTranslations("main")
   const [tasks, setTasks] = useState<Task[]>([]);
   const [filters, setFilters] = useState<{search: string, priority: '' | 'High' | 'Medium' | 'Low', category: string, 
-  startTime?: number, endTime?: number}>({search: '', priority: '', category: ''})
+  startTime?: string, endTime?: string}>({search: '', priority: '', category: ''})
 
   useEffect(() => {
     const loadedTasks = getTasks();
@@ -30,8 +30,8 @@ const MainView = () => {
         (
           task.startTime !== undefined &&
           task.endTime !== undefined &&
-          (filters.startTime === undefined || task.endTime >= filters.startTime) &&
-          (filters.endTime === undefined || task.startTime <= filters.endTime)
+          (filters.startTime === undefined || parseInt(task.endTime) >= parseInt(filters.startTime)) &&
+          (filters.endTime === undefined || parseInt(task.startTime) <= parseInt(filters.endTime))
         )
       )
     )
@@ -46,8 +46,8 @@ const MainView = () => {
         <div className="flex flex-col gap-4 w-[960px] p-4 bg-[#FFFFFF] rounded-lg   dark:bg-[#0D3C61]">
           <SearchFilter setTasks={setTasks} filters={filters} setFilters={setFilters}/>
           <div className="w-full h-[1px] bg-[#E4E4E4] rounded-[48px]   dark:bg-[#145A92]"></div>
-          <ActiveTaskList setTasks={setTasks} activeTasks={activeTasks}/>
-          <CompletedTaskList setTasks={setTasks} completedTasks={completedTasks}/>
+          <ActiveTaskList tasks={tasks} setTasks={setTasks} activeTasks={activeTasks}/>
+          <CompletedTaskList tasks={tasks} setTasks={setTasks} completedTasks={completedTasks}/>
         </div>
       </div>
     </div>

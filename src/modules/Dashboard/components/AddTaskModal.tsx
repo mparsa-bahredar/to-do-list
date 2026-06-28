@@ -23,22 +23,25 @@ const AddTaskModal = ({ setTasks, setIsOpenAddModal }: {
     const [categories, setCategories] = useState<{id: number, title: string}[]>(getCategories())
     const [category, setCategory] = useState<string>('')
     const [newCategory, setNewCategory] = useState<string>('')
-    const [startTime, setStartTime] = useState<number>()
-    const [endTime, setEndTime] = useState<number>()    
+    const [startTime, setStartTime] = useState<string>()
+    const [endTime, setEndTime] = useState<string>()    
 
 
     const addNewCategory = () => {
-        if (!newCategory.trim()) return
-        if (!categories.some(c => c.title === newCategory.trim())) {
-            const newId = Math.max(...categories.map(c => c.id), 0) + 1
-            const updated = [...categories, { id: newId, title: newCategory.trim() }]
-            saveCategories(updated)   
-            setCategories(updated)
+        const title = newCategory.trim();
+        if (!title) return;
+        if (categories.some(c => c.title === title)) {
+            setCategory(title);
+            setNewCategory('');
+            return;
         }
-        const found = categories.find(c => c.title === newCategory.trim())
-        setCategory(found ? found.title : newCategory.trim())
-        setNewCategory('')
-    }
+        const newId = Math.max(...categories.map(c => c.id), 0) + 1;
+        const updated = [...categories, { id: newId, title }];
+        saveCategories(updated);
+        setCategories(updated);
+        setCategory(title);
+        setNewCategory('');
+    };
     const handleNewCategoryKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') addNewCategory()
     }
@@ -101,7 +104,7 @@ const AddTaskModal = ({ setTasks, setIsOpenAddModal }: {
                         />
                     </div>
                     <div className='flex flex-col gap-2'>
-                        <h4 className='w-full font-medium text-base text-[#404040] dark:text-[#F5F5F5]'>{t("description")}</h4>
+                        <h4 className='w-full font-medium text-base text-[#404040]   dark:text-[#F5F5F5]'>{t("description")}</h4>
                         <input
                             onChange={(e) => setDescription(e.target.value)}
                             onKeyDown={handleTaskKeyDown}
@@ -113,7 +116,7 @@ const AddTaskModal = ({ setTasks, setIsOpenAddModal }: {
                         />
                     </div>
                     <div className='flex flex-col gap-2'>
-                        <h4 className='w-full font-medium text-base text-[#404040] dark:text-[#F5F5F5]'>{t("priority")}</h4>
+                        <h4 className='w-full font-medium text-base text-[#404040]   dark:text-[#F5F5F5]'>{t("priority")}</h4>
                         <select value={priority} onChange={(e) => setPriority(e.target.value as 'High' | 'Medium' | 'Low')}
                         onKeyDown={handleTaskKeyDown}    
                         className='w-[400px] h-9 px-2 font-regular text-sm text-[#404040] indent-3 border border-[#E4E4E4] rounded-xl
@@ -125,7 +128,7 @@ const AddTaskModal = ({ setTasks, setIsOpenAddModal }: {
                     </div>
 
                     <div className='flex flex-col gap-2'>
-                        <h4 className='w-full font-medium text-base text-[#404040] dark:text-[#F5F5F5]'>{t("category")}</h4>
+                        <h4 className='w-full font-medium text-base text-[#404040]   dark:text-[#F5F5F5]'>{t("category")}</h4>
                         <div className='flex flex-col gap-4'>
                             <select value={category} onChange={(e) => setCategory(e.target.value)}
                             onKeyDown={handleTaskKeyDown}
@@ -143,11 +146,13 @@ const AddTaskModal = ({ setTasks, setIsOpenAddModal }: {
                                     onChange={(e) => setNewCategory(e.target.value)}
                                     onKeyDown={handleNewCategoryKeyDown}
                                     placeholder={t("categoryPlc")}
-                                    className='w-full h-9 pl-2 font-regular text-sm text-[#525252] indent-3 bg-[#F5F5F5] outline-none focus:ring-1
-                                    focus:ring-[#E4E4E4] rounded-lg dark:text-[#F5F5F5] dark:bg-[#0A2D49]'
+                                    className='w-full h-9 pl-2 font-regular text-sm text-[#525252] indent-3 bg-[#F5F5F5] outline-none 
+                                    focus:ring-1 focus:ring-[#E4E4E4] rounded-lg dark:text-[#F5F5F5] 
+                                    dark:bg-[#0A2D49]'
                                 />
                                 <button onClick={addNewCategory}
-                                className='py-2 px-4 font-medium text-sm text-[#FFFFFF] bg-[#2196F3] rounded-lg dark:text-[#F5F5F5]'>
+                                className='py-2 px-4 font-medium text-sm text-[#FFFFFF] bg-[#2196F3] rounded-lg 
+                                dark:text-[#F5F5F5]'>
                                     {t("addBtn")}
                                 </button>
                             </div>
@@ -156,7 +161,7 @@ const AddTaskModal = ({ setTasks, setIsOpenAddModal }: {
                     <div className="flex flex-col gap-2">
                         <h4 className="font-medium text-base text-[#404040] dark:text-[#F5F5F5]">{t("startTime")}</h4>
                         <DatePicker value={startTime ? new Date(startTime) : null}
-                        onChange={(date) => setStartTime(date?.toDate().getTime())}
+                        onChange={(date) => setStartTime(date?.toString())}
                         plugins={[<TimePicker position="bottom" />]}
                         format="YYYY/MM/DD HH:mm" 
                         inputClass='w-full h-9 text-[#404040] indent-2 bg-[#F5F5F5] rounded-xl   dark:text-[#F5F5F5] dark:bg-[#0A2D49]'
@@ -165,7 +170,7 @@ const AddTaskModal = ({ setTasks, setIsOpenAddModal }: {
                     <div className="flex flex-col gap-2">
                         <h4 className="font-medium text-base text-[#404040] dark:text-[#F5F5F5]">{t("endTime")}</h4>
                         <DatePicker value={endTime ? new Date(endTime) : null}
-                        onChange={(date) => setEndTime(date?.toDate().getTime())}
+                        onChange={(date) => setEndTime(date?.toString())}
                         plugins={[<TimePicker position="bottom" />]}
                         format="YYYY/MM/DD HH:mm" 
                         inputClass='w-full h-9 text-[#404040] indent-2 bg-[#F5F5F5] rounded-xl   dark:text-[#F5F5F5] dark:bg-[#0A2D49]'

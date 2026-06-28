@@ -5,11 +5,16 @@ export type Task = {
     completed: boolean;
     priority: 'High' | 'Medium' | 'Low';
     category: string;
-    startTime?: number;
-    endTime?: number;
+    startTime?: string;
+    endTime?: string;
 }
 
 export type Category = {
     id: number;
     title: string;
 }
+
+export const priorityLabels = {
+    en: { High: 'High', Medium: 'Medium', Low: 'Low' },
+    fa: { High: 'بالا', Medium: 'متوسط', Low: 'پایین' }
+};

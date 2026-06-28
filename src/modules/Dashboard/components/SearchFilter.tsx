@@ -11,14 +11,14 @@ import { Task } from '@/types/types'
 
 interface IProps {
   setTasks: (tasks: Task[] | ((prev: Task[]) => Task[])) => void
-  filters: {search: string, priority: '' | 'High' | 'Medium' | 'Low', category: string, startTime?: number, endTime?: number}
+  filters: {search: string, priority: '' | 'High' | 'Medium' | 'Low', category: string, startTime?: string, endTime?: string}
   setFilters: React.Dispatch<
     React.SetStateAction<{
       search: string
       priority: '' | 'High' | 'Medium' | 'Low'
       category: string
-      startTime?: number
-      endTime?: number
+      startTime?: string
+      endTime?: string
     }>
   >
 }
@@ -43,7 +43,6 @@ const SearchFilter = ({ setTasks, filters, setFilters }: IProps) => {
     }, 3000),
     [setFilters]
   )
-
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setSearchValue(value)
@@ -58,7 +57,7 @@ const SearchFilter = ({ setTasks, filters, setFilters }: IProps) => {
       description: '',
       completed: false,
       priority: 'Medium',
-      category: ''
+      category: '',
     }
     setTasks(prev => {
       const updated = [...prev, newTask]
@@ -87,9 +86,9 @@ const SearchFilter = ({ setTasks, filters, setFilters }: IProps) => {
         onChange={handleSearchChange}
         type='text'
         placeholder={t("searchPlc")}
-        className='w-64 h-10 font-regular text-sm text-[#A3A3A3] placeholder:text-[#A3A3A3] indent-3 bg-[#F5F5F5] rounded-lg 
+        className='w-64 h-10 font-regular text-sm text-[#262626] placeholder:text-[#A3A3A3] indent-3 bg-[#F5F5F5] rounded-lg 
         outline-none focus:ring-1 focus:ring-[#E4E4E4] 
-        dark:text-[#F5F5F5] dark:placeholder:text-[#A3A3A3] dark:bg-[#0A2D49]'/>
+        dark:text-[#F5F5F5] dark:bg-[#0A2D49]'/>
       </div>
       <div className='flex items-center gap-2'>
         <div className='flex relative'>
@@ -101,7 +100,7 @@ const SearchFilter = ({ setTasks, filters, setFilters }: IProps) => {
           onChange={e => setTitle(e.target.value)}
           className='w-64 h-10 font-regular text-sm text-[#262626] indent-3 placeholder:text-[#A3A3A3] bg-[#F5F5F5] rounded-[8px] 
           outline-none focus:ring-1 focus:ring-[#E4E4E4] 
-          dark:text-[#F5F5F5] dark:placeholder:text-[#A3A3A3] dark:bg-[#0A2D49]'/>
+          dark:text-[#F5F5F5] dark:bg-[#0A2D49]'/>
           <button
           onClick={() => setIsOpenAddModal(prev => !prev)}
           className={`flex items-center gap-1 px-2 h-7 font-medium text-xs text-[#262626] bg-[#FFFFFF] rounded-lg cursor-pointer 
