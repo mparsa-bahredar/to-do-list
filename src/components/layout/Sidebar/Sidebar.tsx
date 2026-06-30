@@ -1,47 +1,52 @@
-import { Link } from "@/i18n/routing";
+"use client"
+import { Link, usePathname } from "@/i18n/routing";
 import { useLocale, useTranslations } from "next-intl";
-import Close from "../../../../public/icons/Close";
 
 
-interface IProps{
-    handleOpenMenu: (value: boolean) => void;
-}
 
-const Sidebar = ({handleOpenMenu}: IProps) => {
+const Sidebar = () => {
 
     const t = useTranslations("sidebar");
     const locale = useLocale();
+    const pathname = usePathname();
+
+
+    const getLinkClass = (href: string) =>
+        `flex items-center w-full h-10 rounded-lg transition-colors
+        ${
+            pathname === href
+            ? "font-medium text-[#2196F3] bg-[#E3F2FD]   dark:bg-[#145A92] dark:hover:bg-[#145A92]"
+            : "hover:bg-[#F5F5F5]"
+        }
+        ${locale === "en" ? "pl-4" : "pr-4"}`;
+
 
     return (
-        <>
-            <div onClick={() => {handleOpenMenu(false)}} className="fixed inset-0 z-30"></div>
-            <div className={`flex flex-col gap-16 w-56 min-h-screen p-6 bg-[#FFFFFF] absolute top-0 z-60
-            dark:bg-[#0D3C61]
-            ${locale === "en" ? "left-0 rounded-r-[12px]" : "right-0 rounded-l-[12px]"}`}>
-                <div onClick={() => {handleOpenMenu(false)}} className="text-[#262626] cursor-pointer   dark:text-[#F5F5F5]">
-                    <Close/>
-                </div>
-                <div className="flex flex-col gap-6">
-                    <h3 className="font-bold text-[#262626]">{t("menu")}</h3>
-                    <div className="flex flex-col gap-2 font-medium text-[#262626]   dark:text-[#F5F5F5]">
-                        <Link 
-                        onClick={() => {handleOpenMenu(false)}} 
-                        href={"/"} 
-                        className={`flex items-center w-full h-[44px] rounded-[8px]   hover:bg-[#F5F5F5]
-                        ${locale === "en" ? "pl-4" : "pr-4"}`}>
-                            {t("main")}
-                        </Link>
-                        <Link 
-                        onClick={() => {handleOpenMenu(false)}} 
-                        href={"/categories"} 
-                        className={`flex items-center w-full h-[44px] rounded-[8px]   hover:bg-[#F5F5F5]
-                        ${locale === "en" ? "pl-4" : "pr-4"}`}>
-                            {t("categories")}
-                        </Link>
-                    </div>
-                </div>
+        <div className={`hidden flex-col gap-16 w-64 h-screen px-4 py-24 bg-[#FFFFFF] border-r border-r-[#E4E4E4]
+        shadow-[0_0_8px_rgba(0,0,0,0.04)] fixed top-0 z-6
+        sm:flex
+        dark:bg-[#0D3C61] dark:border-[#145A92]
+        ${`${locale === "en" ? "left-0" : "right-0"}`}`}>
+            <div className={locale === "en" ? "pl-4" : "pr-4"}>
+                <h3 className="font-bold text-[20px] text-[#262626]   dark:text-[#F5F5F5]">{t("menu")}</h3>
             </div>
-        </>
+            <div className="flex flex-col gap-2 font-regular text-[#262626]   dark:text-[#F5F5F5]">
+                <Link 
+                href={"/"} 
+                className={`flex items-center w-full h-10 rounded-[8px]   dark:hover:bg-[#0A2D49]
+                ${locale === "en" ? "pl-4" : "pr-4"}
+                ${getLinkClass("/")}`}>
+                    {t("main")}
+                </Link>
+                <Link 
+                href={"/categories"} 
+                className={`flex items-center w-full h-10 rounded-[8px]   dark:hover:bg-[#0A2D49]
+                ${locale === "en" ? "pl-4" : "pr-4"}
+                ${getLinkClass("/categories")}`}>
+                    {t("categories")}
+                </Link>
+            </div>
+        </div>
     )
 
 }

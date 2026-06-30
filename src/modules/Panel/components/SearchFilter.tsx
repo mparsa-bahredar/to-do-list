@@ -73,7 +73,7 @@ const SearchFilter = ({ setTasks, filters, setFilters }: IProps) => {
 
 
   return (
-    <div className='flex w-full justify-between relative'>
+    <div className='flex w-full justify-between'>
       <div className='flex items-center gap-2'>
         <button
         onClick={() => setIsOpenFilterModal(prev => !prev)}

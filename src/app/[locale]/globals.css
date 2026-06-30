@@ -25,15 +25,15 @@
 }
 
 .dark .scrollbar {
-  scrollbar-color: #4A5565 #6A7282; 
+  scrollbar-color: #0D3C61 #0A2D49; 
 }
 
 .dark .scrollbar::-webkit-scrollbar-track {
-  background: #6A7282; 
+  background: #0A2D49; 
 }
 
 .dark .scrollbar::-webkit-scrollbar-thumb {
-  background-color: #4A5565; 
+  background-color: #0D3C61; 
 }
 
 

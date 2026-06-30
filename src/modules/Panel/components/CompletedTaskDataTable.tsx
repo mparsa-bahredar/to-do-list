@@ -20,10 +20,6 @@ const CompletedTaskDataTable = ({tasks, setTasks, completedTasks}: IProps) => {
   const t = useTranslations("main");
 
   const [search, setSearch] = useState("");
-  
-  useEffect(() => {
-    setTasks(getTasks());
-  }, []);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -40,7 +36,7 @@ const CompletedTaskDataTable = ({tasks, setTasks, completedTasks}: IProps) => {
 
 
   return (
-    <div className='flex flex-col gap-3 items-start'>
+    <div className='flex flex-col gap-3 items-start w-full'>
       <h3 className='font-semibold text-base text-[#404040]   dark:text-[#F5F5F5]'>{t("completedTasks")}</h3>
       <div className='flex flex-col gap-3 w-full p-3 rounded-lg bg-[#F5F5F5]   dark:bg-[#0A2D49]'>
         <TaskTableTitle/>
